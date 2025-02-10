@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validator", "Validator\Vali
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0E94964C-3130-42BE-BFE1-37DA63D7B450}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validator.Tests", "Validator.Tests\Validator.Tests.csproj", "{6C223C35-0421-4A4B-99DD-64DDB4945E97}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,16 +19,11 @@ Global
 		{45C7E926-9665-47DB-AB05-75EC5F6B1824}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45C7E926-9665-47DB-AB05-75EC5F6B1824}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45C7E926-9665-47DB-AB05-75EC5F6B1824}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6C223C35-0421-4A4B-99DD-64DDB4945E97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6C223C35-0421-4A4B-99DD-64DDB4945E97}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6C223C35-0421-4A4B-99DD-64DDB4945E97}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6C223C35-0421-4A4B-99DD-64DDB4945E97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{45C7E926-9665-47DB-AB05-75EC5F6B1824} = {D8AA58B2-5277-49E9-A31E-04DEA95A0D74}
-		{6C223C35-0421-4A4B-99DD-64DDB4945E97} = {0E94964C-3130-42BE-BFE1-37DA63D7B450}
 	EndGlobalSection
 EndGlobal
