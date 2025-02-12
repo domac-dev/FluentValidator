@@ -21,7 +21,7 @@ namespace Validator
         public IValidator<TFluentValidator, TValue> NotNull(string? message = null)
         {
             if (Value is null)
-                ValidatorException.Throw(message ?? $"Parameter '{ParameterName}' cannot be null.");
+                Throw(message ?? $"Parameter '{ParameterName}' cannot be null.");
 
             return this;
         }
