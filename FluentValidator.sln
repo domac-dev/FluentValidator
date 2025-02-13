@@ -5,7 +5,7 @@ VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D8AA58B2-5277-49E9-A31E-04DEA95A0D74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validator", "Validator\Validator.csproj", "{45C7E926-9665-47DB-AB05-75EC5F6B1824}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentValidator", "FluentValidator\FluentValidator.csproj", "{45C7E926-9665-47DB-AB05-75EC5F6B1824}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0E94964C-3130-42BE-BFE1-37DA63D7B450}"
 EndProject
