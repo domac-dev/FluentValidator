@@ -1,4 +1,4 @@
-﻿namespace Validator
+﻿namespace FluentValidator
 {
     public enum ValidationSeverity
     {

@@ -1,4 +1,4 @@
-﻿namespace Validator.Exceptions
+﻿namespace FluentValidator.Exceptions
 {
     public class ValidatorException : Exception
     {

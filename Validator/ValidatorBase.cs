@@ -1,6 +1,6 @@
-﻿using Validator.Exceptions;
+﻿using FluentValidator.Exceptions;
 
-namespace Validator
+namespace FluentValidator
 {
     public abstract class ValidatorBase<TFluentValidator, TValue> : IValidator<TFluentValidator, TValue>
     {

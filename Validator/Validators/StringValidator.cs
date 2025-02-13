@@ -1,8 +1,8 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
-using Validator.Validators.Interfaces;
+using FluentValidator.Validators.Interfaces;
 
-namespace Validator.Validators
+namespace FluentValidator.Validators
 {
     internal class StringValidator(string? input, bool allowNull = false, [CallerArgumentExpression(nameof(input))] string? parameterName = null)
         : ValidatorBase<IStringValidator, string>(input, parameterName, allowNull), IStringValidator

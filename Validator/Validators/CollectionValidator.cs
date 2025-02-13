@@ -1,6 +1,6 @@
-﻿using Validator.Validators.Interfaces;
+﻿using FluentValidator.Validators.Interfaces;
 
-namespace Validator.Validators
+namespace FluentValidator.Validators
 {
     internal class CollectionValidator<T>(IEnumerable<T> input, bool allowNull = false, string? parameterName = null)
         : ValidatorBase<ICollectionValidator<T>, IEnumerable<T>>(input, parameterName, allowNull), ICollectionValidator<T>

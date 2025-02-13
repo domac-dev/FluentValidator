@@ -1,6 +1,6 @@
-﻿using Validator.Validators.Interfaces;
+﻿using FluentValidator.Validators.Interfaces;
 
-namespace Validator.Validators
+namespace FluentValidator.Validators
 {
     internal class EnumValidator<TEnum> : ValidatorBase<IEnumValidator<TEnum>, TEnum>, IEnumValidator<TEnum>
         where TEnum : struct, Enum

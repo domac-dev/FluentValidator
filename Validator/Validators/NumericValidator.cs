@@ -1,20 +1,10 @@
-﻿using Validator.Validators.Interfaces;
+﻿using FluentValidator.Validators.Interfaces;
 
-namespace Validator.Validators
+namespace FluentValidator.Validators
 {
     internal class NumericValidator<TValue> : ValidatorBase<INumericValidator<TValue>, TValue>, INumericValidator<TValue>
         where TValue : struct, IComparable<TValue>
     {
-        private static readonly HashSet<Type> SUPPORTED_TYPES = new HashSet<Type>
-        {
-            typeof(byte), typeof(sbyte),
-            typeof(short), typeof(ushort),
-            typeof(int), typeof(uint),
-            typeof(long), typeof(ulong),
-            typeof(float), typeof(double),
-            typeof(decimal)
-        };
-
         public NumericValidator(TValue input, bool allowNull = false, string? parameterName = null)
             : base(input, parameterName, allowNull)
         {
@@ -137,5 +127,15 @@ namespace Validator.Validators
 
             return this;
         }
+
+        private static readonly HashSet<Type> SUPPORTED_TYPES =
+        [
+            typeof(byte), typeof(sbyte),
+            typeof(short), typeof(ushort),
+            typeof(int), typeof(uint),
+            typeof(long), typeof(ulong),
+            typeof(float), typeof(double),
+            typeof(decimal)
+        ];
     }
 }

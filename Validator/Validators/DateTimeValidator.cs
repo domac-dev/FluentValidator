@@ -1,6 +1,6 @@
-﻿using Validator.Validators.Interfaces;
+﻿using FluentValidator.Validators.Interfaces;
 
-namespace Validator.Validators
+namespace FluentValidator.Validators
 {
     internal class DateTimeValidator(DateTime input, bool allowNull = false, string? parameterName = null)
         : ValidatorBase<IDateTimeValidator, DateTime>(input, parameterName, allowNull), IDateTimeValidator

@@ -1,4 +1,4 @@
-﻿namespace Validator
+﻿namespace FluentValidator
 {
     /// <summary>
     /// Defines a generic interface for a validator that validates values of type <typeparamref name="TValue"/>

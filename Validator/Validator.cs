@@ -1,8 +1,8 @@
 ﻿using System.Runtime.CompilerServices;
-using Validator.Validators;
-using Validator.Validators.Interfaces;
+using FluentValidator.Validators;
+using FluentValidator.Validators.Interfaces;
 
-namespace Validator
+namespace FluentValidator
 {
     public class Validator
     {

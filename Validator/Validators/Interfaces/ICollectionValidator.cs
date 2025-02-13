@@ -1,4 +1,4 @@
-﻿namespace Validator.Validators.Interfaces
+﻿namespace FluentValidator.Validators.Interfaces
 {
     /// <summary>
     /// Provides validation methods for collections.
