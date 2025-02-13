@@ -30,7 +30,7 @@ namespace Validator
             return new EnumValidator<TEnum>(input, allowNull, parameterName);
         }
 
-        public static IDateTimeValidator Date(DateTime input, bool allowNull = false, 
+        public static IDateTimeValidator Date(DateTime input, bool allowNull = false,
             [CallerArgumentExpression(nameof(input))] string? parameterName = null)
         {
             return new DateTimeValidator(input, allowNull, parameterName);

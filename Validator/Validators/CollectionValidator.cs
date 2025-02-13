@@ -1,5 +1,4 @@
-﻿using Validator.Exceptions;
-using Validator.Validators.Interfaces;
+﻿using Validator.Validators.Interfaces;
 
 namespace Validator.Validators
 {
@@ -8,7 +7,7 @@ namespace Validator.Validators
     {
         public ICollectionValidator<T> NotEmpty(string? message = null)
         {
-            if (!Value!.Any())
+            if (!Value.Any())
                 Throw(message ?? $"Collection '{ParameterName}' must not be empty.");
 
             return this;
@@ -16,7 +15,7 @@ namespace Validator.Validators
 
         public ICollectionValidator<T> MinCount(int minCount, string? message = null)
         {
-            if (Value!.Count() < minCount)
+            if (Value.Count() < minCount)
                 Throw(message ?? $"Collection '{ParameterName}' must contain at least {minCount} elements.");
 
             return this;
@@ -24,7 +23,7 @@ namespace Validator.Validators
 
         public ICollectionValidator<T> MaxCount(int maxCount, string? message = null)
         {
-            if (Value!.Count() > maxCount)
+            if (Value.Count() > maxCount)
                 Throw(message ?? $"Collection '{ParameterName}' must contain at most {maxCount} elements.");
 
             return this;
@@ -32,7 +31,7 @@ namespace Validator.Validators
 
         public ICollectionValidator<T> CountBetween(int minCount, int maxCount, string? message = null)
         {
-            int count = Value!.Count();
+            int count = Value.Count();
             if (count < minCount || count > maxCount)
                 Throw(message ?? $"Collection '{ParameterName}' must contain between {minCount} and {maxCount} elements.");
 
@@ -41,7 +40,7 @@ namespace Validator.Validators
 
         public ICollectionValidator<T> Contains(T value, string? message = null)
         {
-            if (!Value!.Contains(value))
+            if (!Value.Contains(value))
                 Throw(message ?? $"Collection '{ParameterName}' must contain the specified value.");
 
             return this;
@@ -49,7 +48,7 @@ namespace Validator.Validators
 
         public ICollectionValidator<T> DoesNotContain(T value, string? message = null)
         {
-            if (Value!.Contains(value))
+            if (Value.Contains(value))
                 Throw(message ?? $"Collection '{ParameterName}' must not contain the specified value.");
 
             return this;
@@ -57,7 +56,7 @@ namespace Validator.Validators
 
         public ICollectionValidator<T> Unique(string? message = null)
         {
-            if (Value!.Distinct().Count() != Value!.Count())
+            if (Value.Distinct().Count() != Value.Count())
                 Throw(message ?? $"Collection '{ParameterName}' must contain only unique elements.");
 
             return this;

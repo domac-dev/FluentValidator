@@ -4,28 +4,21 @@ namespace Validator
 {
     public abstract class ValidatorBase<TFluentValidator, TValue> : IValidator<TFluentValidator, TValue>
     {
-        public TValue? Value { get; private set; }
-        protected string ParameterName { get; private set; }
+        public TValue Value { get; private set; } = default!;
+        protected string ParameterName { get; private set; } = string.Empty;
         protected ValidatorBase(TValue? input, string? paramName = null, bool allowNull = false)
         {
-            Value = input;
-            ParameterName = paramName ?? string.Empty;
-
             if (!allowNull)
-                NotNull(paramName!);
+                NotNull(input);
 
             else if (input is null)
                 return;
-        }
 
-        public IValidator<TFluentValidator, TValue> NotNull(string? message = null)
-        {
-            if (Value is null)
-                Throw(message ?? $"Parameter '{ParameterName}' cannot be null.");
-
-            return this;
+            Value = input!;
+            ParameterName = paramName ?? string.Empty;
         }
 
         protected void Throw(string message) => ValidatorException.Throw(message);
+        private TValue NotNull(TValue? value) => value ?? throw new ValidatorException($"Parameter '{ParameterName}' cannot be null.");
     }
 }

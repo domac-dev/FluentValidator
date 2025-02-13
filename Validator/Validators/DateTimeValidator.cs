@@ -1,6 +1,4 @@
-﻿using System;
-using Validator.Exceptions;
-using Validator.Validators.Interfaces;
+﻿using Validator.Validators.Interfaces;
 
 namespace Validator.Validators
 {
