@@ -11,6 +11,6 @@
         /// <summary>
         /// Gets the value that is being validated.
         /// </summary>
-        public TValue? Value { get; }
+        public TValue? Input { get; }
     }
 }

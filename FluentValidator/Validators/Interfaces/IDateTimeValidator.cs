@@ -3,7 +3,7 @@
     /// <summary>
     /// Provides validation methods for DateTime values.
     /// </summary>
-    public interface IDateTimeValidator : IValidator<IDateTimeValidator, DateTime>
+    public interface IDateTimeValidator : IValidator<IDateTimeValidator, DateTime?>
     {
         /// <summary>
         /// Ensures the DateTime value is not the default value (0001-01-01 00:00:00).

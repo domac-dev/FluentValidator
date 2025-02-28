@@ -8,13 +8,13 @@ namespace FluentValidator.Validators
         public EnumValidator(TEnum? input, bool allowNull = false, string? parameterName = null)
             : base(input ?? GetSafeDefault(), parameterName, allowNull)
         {
-            if (!allowNull && input is null || allowNull! && Value.Equals(GetSafeDefault()))
+            if (!allowNull && input is null || allowNull! && Input.Equals(GetSafeDefault()))
                 Throw($"Parameter '{parameterName}' cannot be null or default.");
         }
 
         public IEnumValidator<TEnum> Defined(string? message = null)
         {
-            if (!Enum.IsDefined(Value))
+            if (!Enum.IsDefined(Input))
                 Throw(message ?? $"Parameter '{ParameterName}' must be a defined enum value.");
 
             return this;
@@ -22,7 +22,7 @@ namespace FluentValidator.Validators
 
         public IEnumValidator<TEnum> NotDefined(string? message = null)
         {
-            if (Enum.IsDefined(Value))
+            if (Enum.IsDefined(Input))
                 Throw(message ?? $"Parameter '{ParameterName}' must not be a defined enum value.");
 
             return this;
@@ -30,7 +30,7 @@ namespace FluentValidator.Validators
 
         public IEnumValidator<TEnum> Defined(params TEnum[] values)
         {
-            if (!values.Contains(Value))
+            if (!values.Contains(Input))
                 Throw($"Parameter '{ParameterName}' must be one of the specified enum values: {string.Join(", ", values)}.");
 
             return this;
@@ -38,7 +38,7 @@ namespace FluentValidator.Validators
 
         public IEnumValidator<TEnum> NotDefined(params TEnum[] values)
         {
-            if (values.Contains(Value))
+            if (values.Contains(Input))
                 Throw($"Parameter '{ParameterName}' must not be one of the specified enum values: {string.Join(", ", values)}.");
 
             return this;

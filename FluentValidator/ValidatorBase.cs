@@ -4,7 +4,7 @@ namespace FluentValidator
 {
     public abstract class ValidatorBase<TFluentValidator, TValue> : IValidator<TFluentValidator, TValue>
     {
-        public TValue Value { get; private set; } = default!;
+        public TValue Input { get; private set; } = default!;
         protected string ParameterName { get; private set; } = string.Empty;
         protected ValidatorBase(TValue? input, string? paramName = null, bool allowNull = false)
         {
@@ -14,7 +14,7 @@ namespace FluentValidator
             else if (input is null)
                 return;
 
-            Value = input!;
+            Input = input!;
             ParameterName = paramName ?? string.Empty;
         }
 

@@ -9,7 +9,7 @@ namespace FluentValidator.Validators
     {
         public IStringValidator StartsWith(string value, string? message = null)
         {
-            if (!Value.StartsWith(value))
+            if (!Input.StartsWith(value))
                 Throw(message ?? $"Parameter '{ParameterName}' must start with \"{value}\".");
 
             return this;
@@ -17,7 +17,7 @@ namespace FluentValidator.Validators
 
         public IStringValidator EndsWith(string value, string? message = null)
         {
-            if (!Value.EndsWith(value))
+            if (!Input.EndsWith(value))
                 Throw(message ?? $"Parameter '{ParameterName}' must end with \"{value}\".");
 
             return this;
@@ -25,7 +25,7 @@ namespace FluentValidator.Validators
 
         public IStringValidator IsNumeric(string? message = null)
         {
-            if (!Value.All(char.IsDigit))
+            if (!Input.All(char.IsDigit))
                 Throw(message ?? $"Parameter '{ParameterName}' must contain only numeric characters.");
 
             return this;
@@ -33,7 +33,7 @@ namespace FluentValidator.Validators
 
         public IStringValidator IsAlpha(string? message = null)
         {
-            if (!Value.All(char.IsLetter))
+            if (!Input.All(char.IsLetter))
                 Throw(message ?? $"Parameter '{ParameterName}' must contain only letters.");
 
             return this;
@@ -41,7 +41,7 @@ namespace FluentValidator.Validators
 
         public IStringValidator IsAlphaNumeric(string? message = null)
         {
-            if (!Value.All(char.IsLetterOrDigit))
+            if (!Input.All(char.IsLetterOrDigit))
                 Throw(message ?? $"Parameter '{ParameterName}' must contain only letters and numbers.");
 
             return this;
@@ -49,7 +49,7 @@ namespace FluentValidator.Validators
 
         public IStringValidator IsGuid(string? message = null)
         {
-            if (!Guid.TryParse(Value, out _))
+            if (!Guid.TryParse(Input, out _))
                 Throw(message ?? $"Parameter '{ParameterName}' must be a valid GUID.");
 
             return this;
@@ -59,7 +59,7 @@ namespace FluentValidator.Validators
         {
             try
             {
-                Convert.FromBase64String(Value);
+                Convert.FromBase64String(Input);
             }
             catch
             {
@@ -71,7 +71,7 @@ namespace FluentValidator.Validators
 
         public IStringValidator HasOnlyDigits(string? message = null)
         {
-            if (!Value.All(char.IsDigit))
+            if (!Input.All(char.IsDigit))
                 Throw(message ?? $"Parameter '{ParameterName}' must contain only digits (0-9).");
 
             return this;
@@ -79,7 +79,7 @@ namespace FluentValidator.Validators
 
         public IStringValidator HasOnlyLetters(string? message = null)
         {
-            if (!Value.All(char.IsLetter))
+            if (!Input.All(char.IsLetter))
                 Throw(message ?? $"Parameter '{ParameterName}' must contain only letters (A-Z, a-z).");
 
             return this;
@@ -87,7 +87,7 @@ namespace FluentValidator.Validators
 
         public IStringValidator UpperCase(string? message = null)
         {
-            if (Value.Any(char.IsLower))
+            if (Input.Any(char.IsLower))
                 Throw(message ?? $"Parameter '{ParameterName}' must be entirely uppercase.");
 
             return this;
@@ -95,7 +95,7 @@ namespace FluentValidator.Validators
 
         public IStringValidator LowerCase(string? message = null)
         {
-            if (Value.Any(char.IsUpper))
+            if (Input.Any(char.IsUpper))
                 Throw(message ?? $"Parameter '{ParameterName}' must be entirely lowercase.");
 
             return this;
@@ -103,7 +103,7 @@ namespace FluentValidator.Validators
 
         public IStringValidator MatchesPattern(Regex regex, string? message = null)
         {
-            if (!regex.IsMatch(Value))
+            if (!regex.IsMatch(Input))
                 Throw(message ?? "Invalid format.");
 
             return this;
@@ -111,23 +111,23 @@ namespace FluentValidator.Validators
 
         public IStringValidator MatchesPattern(string regex, string? message = null)
         {
-            if (!System.Text.RegularExpressions.Regex.IsMatch(Value, regex))
+            if (!System.Text.RegularExpressions.Regex.IsMatch(Input, regex))
                 Throw(message ?? "Invalid format.");
 
             return this;
         }
 
-        public IStringValidator MinMaxLength(int minLength, int maxLength, string? message = null)
+        public IStringValidator Length(int minLength, int maxLength, string? message = null)
         {
-            if (Value.Length < minLength || Value.Length > maxLength)
+            if (Input.Length < minLength || Input.Length > maxLength)
                 Throw(message ?? $"Parameter '{ParameterName}' must be between {minLength} and {maxLength} characters long.");
 
             return this;
         }
 
-        public IStringValidator NullOrWhiteSpace(string? message = null)
+        public IStringValidator NotEmpty(string? message = null)
         {
-            if (string.IsNullOrWhiteSpace(Value))
+            if (string.IsNullOrWhiteSpace(Input))
                 Throw(message ?? $"Parameter '{ParameterName}' cannot be null or whitespace.");
 
             return this;
@@ -135,7 +135,7 @@ namespace FluentValidator.Validators
 
         public IStringValidator MinLength(int minLength, string? message = null)
         {
-            if (Value.Length < minLength)
+            if (Input.Length < minLength)
                 Throw(message ?? $"Parameter '{ParameterName}' must be at least {minLength} characters long.");
 
             return this;
@@ -143,7 +143,7 @@ namespace FluentValidator.Validators
 
         public IStringValidator MaxLength(int maxLength, string? message = null)
         {
-            if (Value.Length > maxLength)
+            if (Input.Length > maxLength)
                 Throw(message ?? $"Parameter '{ParameterName}' must be at most {maxLength} characters long.");
 
             return this;
@@ -151,7 +151,7 @@ namespace FluentValidator.Validators
 
         public IStringValidator IPAddress(string? message = null)
         {
-            if (!System.Net.IPAddress.TryParse(Value, out _))
+            if (!System.Net.IPAddress.TryParse(Input, out _))
                 Throw(message ?? "Invalid IP address format.");
 
             return this;
@@ -159,7 +159,7 @@ namespace FluentValidator.Validators
 
         public IStringValidator EmailAddress(string? message = null)
         {
-            if (!System.Text.RegularExpressions.Regex.IsMatch(Value, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            if (!System.Text.RegularExpressions.Regex.IsMatch(Input, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
                 Throw(message ?? "Invalid email address format.");
 
             return this;
@@ -167,7 +167,7 @@ namespace FluentValidator.Validators
 
         public IStringValidator Contains(char value, string? message = null)
         {
-            if (!Value.Contains(value))
+            if (!Input.Contains(value))
                 Throw(message ?? $"Parameter '{ParameterName}' must contain '{value}'.");
 
             return this;
@@ -175,7 +175,7 @@ namespace FluentValidator.Validators
 
         public IStringValidator Contains(string value, string? message = null)
         {
-            if (!Value.Contains(value))
+            if (!Input.Contains(value))
                 Throw(message ?? $"Parameter '{ParameterName}' must contain \"{value}\".");
 
             return this;
@@ -183,7 +183,7 @@ namespace FluentValidator.Validators
 
         public IStringValidator Contains(IEnumerable<char> values, string? message = null)
         {
-            if (!values.Any(Value.Contains))
+            if (!values.Any(Input.Contains))
                 Throw(message ?? $"Parameter '{ParameterName}' must contain at least one of the specified characters.");
 
             return this;
@@ -191,7 +191,7 @@ namespace FluentValidator.Validators
 
         public IStringValidator Contains(IEnumerable<string> values, string? message = null)
         {
-            if (!values.Any(Value.Contains))
+            if (!values.Any(Input.Contains))
                 Throw(message ?? $"Parameter '{ParameterName}' must contain at least one of the specified strings.");
 
             return this;
@@ -199,7 +199,7 @@ namespace FluentValidator.Validators
 
         public IStringValidator DoesNotContain(char value, string? message = null)
         {
-            if (Value.Contains(value))
+            if (Input.Contains(value))
                 Throw(message ?? $"Parameter '{ParameterName}' must not contain '{value}'.");
 
             return this;
@@ -207,7 +207,7 @@ namespace FluentValidator.Validators
 
         public IStringValidator DoesNotContain(string value, string? message = null)
         {
-            if (Value.Contains(value))
+            if (Input.Contains(value))
                 Throw(message ?? $"Parameter '{ParameterName}' must not contain \"{value}\".");
 
             return this;
@@ -215,7 +215,7 @@ namespace FluentValidator.Validators
 
         public IStringValidator DoesNotContain(IEnumerable<char> values, string? message = null)
         {
-            if (values.Any(Value.Contains))
+            if (values.Any(Input.Contains))
                 Throw(message ?? $"Parameter '{ParameterName}' must not contain any of the specified characters.");
 
             return this;
@@ -223,7 +223,7 @@ namespace FluentValidator.Validators
 
         public IStringValidator DoesNotContain(IEnumerable<string> values, string? message = null)
         {
-            if (values.Any(Value.Contains))
+            if (values.Any(Input.Contains))
                 Throw(message ?? $"Parameter '{ParameterName}' must not contain any of the specified strings.");
 
             return this;

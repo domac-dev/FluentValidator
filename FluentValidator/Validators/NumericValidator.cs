@@ -14,7 +14,7 @@ namespace FluentValidator.Validators
 
         public INumericValidator<TValue> PresentIn(params TValue[] values)
         {
-            if (!values.Contains(Value))
+            if (!values.Contains(Input))
                 Throw($"Parameter '{ParameterName}' must be one of the specified values: {string.Join(", ", values)}.");
 
             return this;
@@ -22,7 +22,7 @@ namespace FluentValidator.Validators
 
         public INumericValidator<TValue> NotPresentIn(params TValue[] values)
         {
-            if (values.Contains(Value))
+            if (values.Contains(Input))
                 Throw($"Parameter '{ParameterName}' must not be one of the specified values: {string.Join(", ", values)}.");
 
             return this;
@@ -30,7 +30,7 @@ namespace FluentValidator.Validators
 
         public INumericValidator<TValue> Min(TValue minValue, string? message = null)
         {
-            if (Value.CompareTo(minValue) < 0)
+            if (Input.CompareTo(minValue) < 0)
                 Throw(message ?? $"Parameter '{ParameterName}' must be at least {minValue}.");
 
             return this;
@@ -38,7 +38,7 @@ namespace FluentValidator.Validators
 
         public INumericValidator<TValue> Max(TValue maxValue, string? message = null)
         {
-            if (Value.CompareTo(maxValue) > 0)
+            if (Input.CompareTo(maxValue) > 0)
                 Throw(message ?? $"Parameter '{ParameterName}' must be at most {maxValue}.");
 
             return this;
@@ -46,7 +46,7 @@ namespace FluentValidator.Validators
 
         public INumericValidator<TValue> MinMax(TValue minValue, TValue maxValue, string? message = null)
         {
-            if (Value.CompareTo(minValue) < 0 || Value.CompareTo(maxValue) > 0)
+            if (Input.CompareTo(minValue) < 0 || Input.CompareTo(maxValue) > 0)
                 Throw(message ?? $"Parameter '{ParameterName}' must be between {minValue} and {maxValue}.");
 
             return this;
@@ -54,7 +54,7 @@ namespace FluentValidator.Validators
 
         public INumericValidator<TValue> Positive(string? message = null)
         {
-            if (Value.CompareTo(default) <= 0)
+            if (Input.CompareTo(default) <= 0)
                 Throw(message ?? $"Parameter '{ParameterName}' must be positive.");
 
             return this;
@@ -62,7 +62,7 @@ namespace FluentValidator.Validators
 
         public INumericValidator<TValue> Negative(string? message = null)
         {
-            if (Value.CompareTo(default) >= 0)
+            if (Input.CompareTo(default) >= 0)
                 Throw(message ?? $"Parameter '{ParameterName}' must be negative.");
 
             return this;
@@ -70,7 +70,7 @@ namespace FluentValidator.Validators
 
         public INumericValidator<TValue> Even(string? message = null)
         {
-            dynamic val = Value;
+            dynamic val = Input;
             if (val % 2 != 0)
                 Throw(message ?? $"Parameter '{ParameterName}' must be an even number.");
 
@@ -79,7 +79,7 @@ namespace FluentValidator.Validators
 
         public INumericValidator<TValue> Odd(string? message = null)
         {
-            dynamic val = Value;
+            dynamic val = Input;
             if (val % 2 == 0)
                 Throw(message ?? $"Parameter '{ParameterName}' must be an odd number.");
 
@@ -88,7 +88,7 @@ namespace FluentValidator.Validators
 
         public INumericValidator<TValue> DivisibleBy(TValue divisor, string? message = null)
         {
-            dynamic val = Value;
+            dynamic val = Input;
             dynamic div = divisor;
             if (div == 0 || val % div != 0)
                 Throw(message ?? $"Parameter '{ParameterName}' must be divisible by {divisor}.");
@@ -98,7 +98,7 @@ namespace FluentValidator.Validators
 
         public INumericValidator<TValue> NotZero(string? message = null)
         {
-            if (Value.CompareTo(default) == 0)
+            if (Input.CompareTo(default) == 0)
                 Throw(message ?? $"Parameter '{ParameterName}' must not be zero.");
 
             return this;
@@ -106,7 +106,7 @@ namespace FluentValidator.Validators
 
         public INumericValidator<TValue> EqualTo(TValue value, string? message = null)
         {
-            if (Value.CompareTo(value) != 0)
+            if (Input.CompareTo(value) != 0)
                 Throw(message ?? $"Parameter '{ParameterName}' must be equal to {value}.");
 
             return this;
@@ -114,7 +114,7 @@ namespace FluentValidator.Validators
 
         public INumericValidator<TValue> NotEqualTo(TValue value, string? message = null)
         {
-            if (Value.CompareTo(value) == 0)
+            if (Input.CompareTo(value) == 0)
                 Throw(message ?? $"Parameter '{ParameterName}' must not be equal to {value}.");
 
             return this;
@@ -122,7 +122,7 @@ namespace FluentValidator.Validators
 
         public INumericValidator<TValue> BetweenExclusive(TValue minValue, TValue maxValue, string? message = null)
         {
-            if (Value.CompareTo(minValue) <= 0 || Value.CompareTo(maxValue) >= 0)
+            if (Input.CompareTo(minValue) <= 0 || Input.CompareTo(maxValue) >= 0)
                 Throw(message ?? $"Parameter '{ParameterName}' must be strictly between {minValue} and {maxValue}.");
 
             return this;

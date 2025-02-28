@@ -23,7 +23,7 @@ namespace FluentValidator.Validators.Interfaces
         /// Ensures the string is null, empty, or consists only of whitespace characters.
         /// </summary>
         /// <param name="message">Optional custom error message.</param>
-        IStringValidator NullOrWhiteSpace(string? message = null);
+        IStringValidator NotEmpty(string? message = null);
 
         /// <summary>
         /// Ensures the string has at least the specified minimum length.
@@ -45,7 +45,7 @@ namespace FluentValidator.Validators.Interfaces
         /// <param name="minLength">The minimum required length.</param>
         /// <param name="maxLength">The maximum allowed length.</param>
         /// <param name="message">Optional custom error message.</param>
-        IStringValidator MinMaxLength(int minLength, int maxLength, string? message = null);
+        IStringValidator Length(int minLength, int maxLength, string? message = null);
 
         /// <summary>
         /// Ensures the string matches the specified regular expression pattern.

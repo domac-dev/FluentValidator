@@ -7,7 +7,7 @@ namespace FluentValidator.Validators
     {
         public ICollectionValidator<T> NotEmpty(string? message = null)
         {
-            if (!Value.Any())
+            if (!Input.Any())
                 Throw(message ?? $"Collection '{ParameterName}' must not be empty.");
 
             return this;
@@ -15,7 +15,7 @@ namespace FluentValidator.Validators
 
         public ICollectionValidator<T> MinCount(int minCount, string? message = null)
         {
-            if (Value.Count() < minCount)
+            if (Input.Count() < minCount)
                 Throw(message ?? $"Collection '{ParameterName}' must contain at least {minCount} elements.");
 
             return this;
@@ -23,7 +23,7 @@ namespace FluentValidator.Validators
 
         public ICollectionValidator<T> MaxCount(int maxCount, string? message = null)
         {
-            if (Value.Count() > maxCount)
+            if (Input.Count() > maxCount)
                 Throw(message ?? $"Collection '{ParameterName}' must contain at most {maxCount} elements.");
 
             return this;
@@ -31,7 +31,7 @@ namespace FluentValidator.Validators
 
         public ICollectionValidator<T> CountBetween(int minCount, int maxCount, string? message = null)
         {
-            int count = Value.Count();
+            int count = Input.Count();
             if (count < minCount || count > maxCount)
                 Throw(message ?? $"Collection '{ParameterName}' must contain between {minCount} and {maxCount} elements.");
 
@@ -40,7 +40,7 @@ namespace FluentValidator.Validators
 
         public ICollectionValidator<T> Contains(T value, string? message = null)
         {
-            if (!Value.Contains(value))
+            if (!Input.Contains(value))
                 Throw(message ?? $"Collection '{ParameterName}' must contain the specified value.");
 
             return this;
@@ -48,7 +48,7 @@ namespace FluentValidator.Validators
 
         public ICollectionValidator<T> DoesNotContain(T value, string? message = null)
         {
-            if (Value.Contains(value))
+            if (Input.Contains(value))
                 Throw(message ?? $"Collection '{ParameterName}' must not contain the specified value.");
 
             return this;
@@ -56,7 +56,7 @@ namespace FluentValidator.Validators
 
         public ICollectionValidator<T> Unique(string? message = null)
         {
-            if (Value.Distinct().Count() != Value.Count())
+            if (Input.Distinct().Count() != Input.Count())
                 Throw(message ?? $"Collection '{ParameterName}' must contain only unique elements.");
 
             return this;
